@@ -1,0 +1,20 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+        freq = {}
+        result = []
+
+        for num in nums:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+
+
+        while k != 0:
+            temp = max(freq, key=freq.get)
+            result.append(temp)
+            del freq[temp]
+            k -= 1
+
+        return result
